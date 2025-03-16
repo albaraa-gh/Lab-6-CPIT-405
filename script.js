@@ -15,7 +15,7 @@ likesBtn.innerText = likesCount + " Like  👎";
 dislikesBtn.innerText = dislikesCount + " Dislike  👍";
 
 likesBtn.addEventListener("click", () => {
-    if (document.cookie.indexOf("voted" === -1)) {
+    if (document.cookie.indexOf("voted") === -1){
         likesCount++;
         likesBtn.innerText = likesCount + " Like  👎";
         setCookie();
@@ -40,9 +40,11 @@ function setCookie() {
 
 clearBtn.addEventListener("click", () => {
     commentBox.value = ""
+    commentsList.innerHTML="";
     document.cookie = "voted=true; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     location.reload();
 });
+
 function disableAllButtons() {
     likesBtn.disabled = true;
     dislikesBtn.disabled = true;
